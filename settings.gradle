@@ -1,0 +1,4 @@
+rootProject.name = 'api-training'
+include 'restful-service'
+include 'restful-client'
+
