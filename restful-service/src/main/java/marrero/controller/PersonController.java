@@ -2,6 +2,7 @@ package marrero.controller;
 
 import marrero.model.Person;
 import marrero.response.People;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class PersonController {
     // POST
     @RequestMapping(value = "/person", method = RequestMethod.POST)
     public People addPerson(@RequestBody Person person){
+        if (this.personList.isEmpty()) populateList();
         this.personList.add(person);
         return new People(this.personList);
     }
