@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic().and().authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/person").denyAll()
+                .antMatchers(HttpMethod.POST, "/person").hasRole("admin")
                 .antMatchers(HttpMethod.GET, "/people").hasRole("admin")
                 .antMatchers(HttpMethod.GET, "/people/**").hasAnyRole("admin", "user")
                 .and().csrf().disable();
